@@ -11,8 +11,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "announcements")
-public class Announcement {
+@Table(name = "affairs")
+public class Affair {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,7 @@ public class Announcement {
     @JoinColumn(name = "owner_id")
     private User owner;
 
-    @ManyToMany(mappedBy = "userAnnouncements")
+    @ManyToMany(mappedBy = "userAffairs")
     private Set<User> participants = new HashSet<>();
 
 }

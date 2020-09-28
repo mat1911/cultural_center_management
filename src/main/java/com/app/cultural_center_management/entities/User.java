@@ -1,15 +1,15 @@
 package com.app.cultural_center_management.entities;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "users")
 public class User {
@@ -17,7 +17,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String username;
+    private String password;
     private String name;
     private String surname;
     private Integer age;
@@ -40,14 +41,23 @@ public class User {
             name = "participants",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "ann_id", referencedColumnName = "id"))
-    private Set<Announcement> userAnnouncements = new HashSet<>();
+    private Set<Affair> userAffairs = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private Set<Role> userRoles = new HashSet<>();
+//    @ManyToMany(cascade = CascadeType.MERGE)
+//    @JoinTable(
+//            name = "user_role",
+//            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+//    private Set<MyRole> userRoles = new HashSet<>();
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id")
+    )
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
@@ -63,5 +73,5 @@ public class User {
     private Set<Contestant> contestants;
 
     @OneToMany(mappedBy = "owner", fetch =  FetchType.EAGER)
-    private Set<Announcement> announcements = new HashSet<>();
+    private Set<Affair> affairs = new HashSet<>();
 }
