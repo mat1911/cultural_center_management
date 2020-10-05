@@ -1,4 +1,4 @@
-package com.app.cultural_center_management.dto.securityDto;
+package com.app.cultural_center_management.dto.securityDto.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

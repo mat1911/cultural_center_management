@@ -1,6 +1,9 @@
 package com.app.cultural_center_management.security;
 
 import com.app.cultural_center_management.dto.securityDto.ResponseData;
+import com.app.cultural_center_management.security.filters.ExceptionHandlerFilter;
+import com.app.cultural_center_management.security.filters.JwtAuthenticationFilter;
+import com.app.cultural_center_management.security.filters.JwtAuthorizationToken;
 import com.app.cultural_center_management.security.tokens.TokensService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,6 +20,11 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @EnableWebSecurity
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -27,6 +35,20 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     public AppSecurityConfig(@Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService, TokensService tokensService) {
         this.userDetailsService = userDetailsService;
         this.tokensService = tokensService;
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        final CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("http://localhost:4200"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH"));
+        configuration.setAllowCredentials(true);
+        configuration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
+
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
     }
 
     @Bean
@@ -81,12 +103,14 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .csrf()
                 .disable()
+                .cors()
+                .and()
 
-//                .exceptionHandling()
-//                .authenticationEntryPoint(authenticationEntryPoint())
-//                .accessDeniedHandler(accessDeniedHandler())
+                .exceptionHandling()
+                .authenticationEntryPoint(authenticationEntryPoint())
+                .accessDeniedHandler(accessDeniedHandler())
 
-//                .and()
+                .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
@@ -101,12 +125,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
 
                 .and()
-//                .addFilter(new JwtAuthenticationFilter(authenticationManager(), tokensService))
-//                .addFilter(new JwtAuthorizationToken(authenticationManager(), tokensService))
-
-                .headers()
-                .frameOptions()
-                .disable();
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), tokensService))
+                .addFilter(new JwtAuthorizationToken(authenticationManager(), tokensService));
 
     }
 }

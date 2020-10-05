@@ -2,6 +2,7 @@ package com.app.cultural_center_management.controllers;
 
 import com.app.cultural_center_management.dto.securityDto.AppError;
 import com.app.cultural_center_management.exceptions.InvalidFormData;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,10 +16,10 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "http://localhost:4200")
 public class ExceptionController {
 
-    @ExceptionHandler({SecurityException.class, Exception.class})
+    @ExceptionHandler(SecurityException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public AppError handleAppSecurityException(Exception e) {
-        return new AppError("Internal server error occurred", 500);
+    public AppError handleAppSecurityException(SecurityException e) {
+        return new AppError(e.getMessage(), 401);
     }
 
     @ExceptionHandler(InvalidFormData.class)
@@ -31,5 +32,21 @@ public class ExceptionController {
                 .collect(Collectors.joining("\n"));
 
         return new AppError(errorMessage, 422);
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public AppError handleException(Exception ex){
+        ex.printStackTrace();
+        System.out.println(ex.getMessage());
+        return new AppError("Internal server error occurred", 500);
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public AppError handleException(ExpiredJwtException ex){
+        System.out.println("PROBLEM");
+        return new AppError("User should be authenticated anew " +
+                "or his token should be refreshed", 401);
     }
 }

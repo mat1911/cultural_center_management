@@ -5,7 +5,7 @@ import com.app.cultural_center_management.dto.securityDto.news.GetNewsDto;
 import com.app.cultural_center_management.dto.securityDto.news.UpdateNewsDto;
 import com.app.cultural_center_management.entities.News;
 import com.app.cultural_center_management.exceptions.ObjectNotFoundException;
-import com.app.cultural_center_management.mapper.Mappers;
+import com.app.cultural_center_management.mapper.NewsMapper;
 import com.app.cultural_center_management.repositories.NewsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -30,18 +30,18 @@ public class NewsService {
     public Page<GetAllNewsDto> getAllNews(int pageNumber, int pageSize){
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<News> page = newsRepository.findAllByOrderByDateOfAddDesc(pageRequest);
-        List<GetAllNewsDto> resultContent = Mappers.fromNewsListToGetAllNewsDtoList(page.getContent());
+        List<GetAllNewsDto> resultContent = NewsMapper.fromNewsListToGetAllNewsDtoList(page.getContent());
 
         return new PageImpl<>(resultContent, pageRequest, page.getTotalElements());
     }
 
     public GetNewsDto getNewsById(long newsId){
-        return Mappers.fromNewsToGetNewsDto(newsRepository.findById(newsId).orElseThrow(() ->
+        return NewsMapper.fromNewsToGetNewsDto(newsRepository.findById(newsId).orElseThrow(() ->
                 new ObjectNotFoundException("News with given id " + newsId + " not found")));
     }
 
     public UpdateNewsDto getNewsToUpdateByIdDto(long newsId){
-        return Mappers.fromNewsToUpdateNewsDto(newsRepository.findById(newsId).orElseThrow(() ->
+        return NewsMapper.fromNewsToUpdateNewsDto(newsRepository.findById(newsId).orElseThrow(() ->
                 new ObjectNotFoundException("News with given id " + newsId + " not found")));
     }
 
@@ -71,7 +71,7 @@ public class NewsService {
     }
 
     public Long createNews(UpdateNewsDto updateNewsDto){
-        News newsToCreate = Mappers.fromUpdateNewsDtoToNews(updateNewsDto);
+        News newsToCreate = NewsMapper.fromUpdateNewsDtoToNews(updateNewsDto);
         newsToCreate.setDateOfAdd(LocalDate.now());
         newsToCreate.setPictureUrl(DEFAULT_PICTURE_URL);
 

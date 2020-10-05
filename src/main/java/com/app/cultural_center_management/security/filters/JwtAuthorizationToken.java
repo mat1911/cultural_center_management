@@ -1,6 +1,7 @@
 package com.app.cultural_center_management.security.filters;
 
 import com.app.cultural_center_management.security.tokens.TokensService;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,6 +30,7 @@ public class JwtAuthorizationToken extends BasicAuthenticationFilter {
             HttpServletRequest request,
             HttpServletResponse response,
             FilterChain chain) throws IOException, ServletException {
+
         String accessToken = request.getHeader(HttpHeaders.AUTHORIZATION);
         if (Objects.nonNull(accessToken)) {
             UsernamePasswordAuthenticationToken auth = tokensService.parseToken(accessToken);

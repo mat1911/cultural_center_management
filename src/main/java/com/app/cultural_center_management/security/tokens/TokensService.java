@@ -1,7 +1,7 @@
 package com.app.cultural_center_management.security.tokens;
 
-import com.app.cultural_center_management.dto.securityDto.RefreshTokenDto;
-import com.app.cultural_center_management.dto.securityDto.TokensDto;
+import com.app.cultural_center_management.dto.securityDto.security.RefreshTokenDto;
+import com.app.cultural_center_management.dto.securityDto.security.TokensDto;
 import com.app.cultural_center_management.entities.User;
 import com.app.cultural_center_management.repositories.UserRepository;
 import io.jsonwebtoken.Claims;
@@ -55,6 +55,7 @@ public class TokensService {
                 .setSubject(userId)
                 .setExpiration(accessTokenExpirationDate)
                 .signWith(secretKey)
+                .claim("roles", user.getRoles())
                 .compact();
 
         String refreshToken = Jwts
@@ -113,9 +114,6 @@ public class TokensService {
         }
 
         long accessTokenExpirationDateMs = Long.parseLong(getClaims(token).get(refreshTokenProperty).toString());
-        if(accessTokenExpirationDateMs < System.currentTimeMillis()){
-            throw new SecurityException("Cannot generate token");
-        }
 
         Long userId = getId(token);
         User user = userRepository
@@ -130,6 +128,7 @@ public class TokensService {
                 .builder()
                 .setSubject(userIdAsString)
                 .setExpiration(accessTokenExpirationDate)
+                .claim("roles", user.getRoles())
                 .signWith(secretKey)
                 .compact();
 

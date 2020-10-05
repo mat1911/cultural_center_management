@@ -1,12 +1,12 @@
 package com.app.cultural_center_management.controllers;
 
-import com.app.cultural_center_management.dto.securityDto.RefreshTokenDto;
-import com.app.cultural_center_management.dto.securityDto.RegisterUserDto;
-import com.app.cultural_center_management.dto.securityDto.ResponseData;
-import com.app.cultural_center_management.dto.securityDto.TokensDto;
+import com.app.cultural_center_management.dto.securityDto.security.RefreshTokenDto;
+import com.app.cultural_center_management.dto.securityDto.security.RegisterUserDto;
+import com.app.cultural_center_management.dto.securityDto.security.TokensDto;
 import com.app.cultural_center_management.security.tokens.TokensService;
 import com.app.cultural_center_management.service.SecurityService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,18 +19,14 @@ public class SecurityController {
     private final TokensService tokensService;
 
     @PostMapping("/register")
-    public ResponseData<Long> register(@RequestBody RegisterUserDto registerUserDto) {
-        return ResponseData
-                .<Long>builder()
-                .data(securityService.register(registerUserDto))
-                .build();
+    @ResponseStatus(HttpStatus.CREATED)
+    public Long register(@RequestBody RegisterUserDto registerUserDto) {
+        return securityService.register(registerUserDto);
     }
 
     @PostMapping("/refresh-token")
-    public ResponseData<TokensDto> refreshTokens(@RequestBody RefreshTokenDto refreshTokenDto) {
-        return ResponseData
-                .<TokensDto>builder()
-                .data(tokensService.parseTokenFromRefreshToken(refreshTokenDto))
-                .build();
+    @ResponseStatus(HttpStatus.OK)
+    public TokensDto refreshTokens(@RequestBody RefreshTokenDto refreshTokenDto) {
+        return tokensService.parseTokenFromRefreshToken(refreshTokenDto);
     }
 }
