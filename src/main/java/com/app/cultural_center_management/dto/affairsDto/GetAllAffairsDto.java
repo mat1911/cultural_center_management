@@ -1,4 +1,4 @@
-package com.app.cultural_center_management.dto.securityDto.affairs;
+package com.app.cultural_center_management.dto.affairsDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,8 +14,10 @@ import java.time.LocalDate;
 public class GetAllAffairsDto {
     private Long id;
     private String title;
+    private String shortDescription;
     private String description;
     private Double rate;
     private LocalDate sinceDate;
+    private Long availableSeats;
     private String pictureUrl;
 }

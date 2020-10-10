@@ -1,8 +1,8 @@
 package com.app.cultural_center_management.controllers;
 
-import com.app.cultural_center_management.dto.securityDto.security.RefreshTokenDto;
-import com.app.cultural_center_management.dto.securityDto.security.RegisterUserDto;
-import com.app.cultural_center_management.dto.securityDto.security.TokensDto;
+import com.app.cultural_center_management.dto.securityDto.RefreshTokenDto;
+import com.app.cultural_center_management.dto.securityDto.RegisterUserDto;
+import com.app.cultural_center_management.dto.securityDto.TokensDto;
 import com.app.cultural_center_management.security.tokens.TokensService;
 import com.app.cultural_center_management.service.SecurityService;
 import lombok.RequiredArgsConstructor;

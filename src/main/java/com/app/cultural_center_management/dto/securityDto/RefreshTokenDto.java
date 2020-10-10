@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ResponseData<T> {
-    private T data;
-    private long fullContentSize;
-    private String error;
+public class RefreshTokenDto {
+    private String token;
 }

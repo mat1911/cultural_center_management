@@ -1,20 +1,18 @@
-package com.app.cultural_center_management.dto.securityDto.news;
+package com.app.cultural_center_management.dto.affairsDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class GetAllNewsDto {
-    private Long id;
+public class GetAffairDto {
     private String title;
     private String shortDescription;
-    private String pictureUrl;
-    private LocalDate dateOfAdd;
+    private Long availableSeats;
+    private String ownerName;
+    private String ownerSurname;
 }

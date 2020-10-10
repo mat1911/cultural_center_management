@@ -1,8 +1,8 @@
 package com.app.cultural_center_management.controllers;
 
-import com.app.cultural_center_management.dto.securityDto.ResponseData;
-import com.app.cultural_center_management.dto.securityDto.news.GetAllNewsDto;
-import com.app.cultural_center_management.dto.securityDto.news.GetNewsDto;
+import com.app.cultural_center_management.dto.ResponseData;
+import com.app.cultural_center_management.dto.newsDto.GetAllNewsDto;
+import com.app.cultural_center_management.dto.newsDto.GetNewsDto;
 import com.app.cultural_center_management.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

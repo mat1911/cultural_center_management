@@ -1,8 +1,8 @@
 package com.app.cultural_center_management.controllers;
 
-import com.app.cultural_center_management.dto.securityDto.AppError;
+import com.app.cultural_center_management.dto.AppError;
 import com.app.cultural_center_management.exceptions.InvalidFormData;
-import io.jsonwebtoken.ExpiredJwtException;
+import com.app.cultural_center_management.exceptions.NotAllowedOperationException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -42,11 +42,9 @@ public class ExceptionController {
         return new AppError("Internal server error occurred", 500);
     }
 
-    @ExceptionHandler(ExpiredJwtException.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public AppError handleException(ExpiredJwtException ex){
-        System.out.println("PROBLEM");
-        return new AppError("User should be authenticated anew " +
-                "or his token should be refreshed", 401);
+    @ExceptionHandler(NotAllowedOperationException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public AppError handleNotAllowedOperationException(NotAllowedOperationException ex){
+        return new AppError(ex.getMessage(), 409);
     }
 }

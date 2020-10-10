@@ -1,8 +1,8 @@
 package com.app.cultural_center_management.service;
 
-import com.app.cultural_center_management.dto.securityDto.news.GetAllNewsDto;
-import com.app.cultural_center_management.dto.securityDto.news.GetNewsDto;
-import com.app.cultural_center_management.dto.securityDto.news.UpdateNewsDto;
+import com.app.cultural_center_management.dto.newsDto.GetAllNewsDto;
+import com.app.cultural_center_management.dto.newsDto.GetNewsDto;
+import com.app.cultural_center_management.dto.newsDto.UpdateNewsDto;
 import com.app.cultural_center_management.entities.News;
 import com.app.cultural_center_management.exceptions.ObjectNotFoundException;
 import com.app.cultural_center_management.mapper.NewsMapper;

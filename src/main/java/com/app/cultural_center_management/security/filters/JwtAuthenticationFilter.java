@@ -1,7 +1,7 @@
 package com.app.cultural_center_management.security.filters;
 
-import com.app.cultural_center_management.dto.securityDto.security.AuthenticationDto;
-import com.app.cultural_center_management.dto.securityDto.security.TokensDto;
+import com.app.cultural_center_management.dto.securityDto.AuthenticationDto;
+import com.app.cultural_center_management.dto.securityDto.TokensDto;
 import com.app.cultural_center_management.security.tokens.TokensService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

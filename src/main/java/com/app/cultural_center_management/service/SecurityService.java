@@ -1,8 +1,8 @@
 package com.app.cultural_center_management.service;
 
-import com.app.cultural_center_management.dto.securityDto.security.RegisterUserDto;
+import com.app.cultural_center_management.dto.securityDto.RegisterUserDto;
 import com.app.cultural_center_management.entities.Role;
-import com.app.cultural_center_management.mapper.NewsMapper;
+import com.app.cultural_center_management.mapper.UsersMapper;
 import com.app.cultural_center_management.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,7 +33,7 @@ public class SecurityService {
             throw new SecurityException("Passwords are not the same");
         }
 
-         var user = NewsMapper.fromRegisterUserToUser(registerUserDto);
+         var user = UsersMapper.fromRegisterUserToUser(registerUserDto);
          user.setPassword(passwordEncoder.encode(user.getPassword()));
          user.setRoles(Set.of(Role.ROLE_USER));
          return userRepository

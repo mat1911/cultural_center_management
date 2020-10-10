@@ -1,6 +1,6 @@
 package com.app.cultural_center_management.controllers.admin;
 
-import com.app.cultural_center_management.dto.securityDto.news.UpdateNewsDto;
+import com.app.cultural_center_management.dto.newsDto.UpdateNewsDto;
 import com.app.cultural_center_management.exceptions.InvalidFormData;
 import com.app.cultural_center_management.service.NewsService;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.app.cultural_center_management.dto.securityDto.security;
+package com.app.cultural_center_management.dto.securityDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RefreshTokenDto {
-    private String token;
+public class AuthenticationDto {
+    private String username;
+    private String password;
 }

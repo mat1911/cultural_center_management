@@ -1,4 +1,4 @@
-package com.app.cultural_center_management.dto.securityDto.news;
+package com.app.cultural_center_management.dto.newsDto;
 
 
 import lombok.AllArgsConstructor;

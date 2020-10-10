@@ -1,7 +1,8 @@
 package com.app.cultural_center_management.controllers;
 
-import com.app.cultural_center_management.dto.securityDto.ResponseData;
-import com.app.cultural_center_management.dto.securityDto.affairs.GetAllAffairsDto;
+import com.app.cultural_center_management.dto.ResponseData;
+import com.app.cultural_center_management.dto.affairsDto.GetAffairDto;
+import com.app.cultural_center_management.dto.affairsDto.GetAllAffairsDto;
 import com.app.cultural_center_management.service.AffairsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -32,7 +33,21 @@ public class AffairsController {
 
     @PatchMapping("/{affairId}")
     @ResponseStatus(HttpStatus.OK)
-    public Double updateAffairRate(@PathVariable int affairId, @RequestBody int affairRate){
-        return affairsService.updateAffairRate(affairId, affairRate);
+    public Long updateAffairRate(@PathVariable Long affairId, @RequestParam Long userId,
+                                 @RequestParam(defaultValue = "-1") Long affairRate){
+        return affairsService.updateAffairRate(affairId, userId, affairRate);
+    }
+
+    @PatchMapping("enroll/{affairId}")
+    @ResponseStatus(HttpStatus.OK)
+    public Long enrollUsersToAffair(@PathVariable Long affairId, @RequestBody List<Long> usersId){
+        System.out.println("AffairsController -> enrollUsersToAffair()");
+        return affairsService.enrollUsersToAffair(affairId, usersId);
+    }
+
+    @GetMapping(value = "/{affairId}")
+    @ResponseStatus(HttpStatus.OK)
+    public GetAffairDto getAffairById(@PathVariable Long affairId){
+        return affairsService.getAffairById(affairId);
     }
 }

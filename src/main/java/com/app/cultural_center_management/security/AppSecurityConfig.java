@@ -1,7 +1,6 @@
 package com.app.cultural_center_management.security;
 
-import com.app.cultural_center_management.dto.securityDto.ResponseData;
-import com.app.cultural_center_management.security.filters.ExceptionHandlerFilter;
+import com.app.cultural_center_management.dto.ResponseData;
 import com.app.cultural_center_management.security.filters.JwtAuthenticationFilter;
 import com.app.cultural_center_management.security.filters.JwtAuthorizationToken;
 import com.app.cultural_center_management.security.tokens.TokensService;

@@ -1,6 +1,6 @@
 package com.app.cultural_center_management.security.filters;
 
-import com.app.cultural_center_management.dto.securityDto.AppError;
+import com.app.cultural_center_management.dto.AppError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.core.Ordered;

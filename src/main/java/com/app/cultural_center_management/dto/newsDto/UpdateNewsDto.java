@@ -1,4 +1,4 @@
-package com.app.cultural_center_management.dto.securityDto.news;
+package com.app.cultural_center_management.dto.newsDto;
 
 import com.app.cultural_center_management.validators.MultipartFileValidator;
 import lombok.AllArgsConstructor;
@@ -17,9 +17,9 @@ public class UpdateNewsDto {
     private Long id;
     @Size(min = 3, message = "Title should contain at least 3 letters")
     private String title;
-    @Size(min = 3, message = "Description should contain at least 3 letters")
+    @Size(min = 3, max = 1000, message = "Description should contain at least 3 letters")
     private String description;
-    @Size(min = 3, message = "Short description should contain at least 3 letters")
+    @Size(min = 3, max = 1000, message = "Short description should contain at least 3 letters")
     private String shortDescription;
     @MultipartFileValidator(maxSize = 90000, message = "Picture size should be lower than 90KB and acceptable " +
             "extensions are png, jpg, jpeg")

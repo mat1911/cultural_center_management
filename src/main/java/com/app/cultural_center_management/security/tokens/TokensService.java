@@ -1,7 +1,7 @@
 package com.app.cultural_center_management.security.tokens;
 
-import com.app.cultural_center_management.dto.securityDto.security.RefreshTokenDto;
-import com.app.cultural_center_management.dto.securityDto.security.TokensDto;
+import com.app.cultural_center_management.dto.securityDto.RefreshTokenDto;
+import com.app.cultural_center_management.dto.securityDto.TokensDto;
 import com.app.cultural_center_management.entities.User;
 import com.app.cultural_center_management.repositories.UserRepository;
 import io.jsonwebtoken.Claims;

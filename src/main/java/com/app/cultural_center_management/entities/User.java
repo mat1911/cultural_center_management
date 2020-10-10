@@ -23,8 +23,8 @@ public class User {
     private String surname;
     private Integer age;
     private String email;
-//    @Column(name = "avatar_url")
-//    private String avatarUrl;
+    @Column(name = "avatar_url")
+    private String avatarUrl;
     @Column(name = "phone_number")
     private String phoneNumber;
     private Boolean newsletter;
@@ -34,6 +34,7 @@ public class User {
             name = "applications",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "job_id", referencedColumnName = "id"))
+    @EqualsAndHashCode.Exclude
     private Set<JobOffer> chosenJobOffers = new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.MERGE)
@@ -41,6 +42,7 @@ public class User {
             name = "participants",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "ann_id", referencedColumnName = "id"))
+    @EqualsAndHashCode.Exclude
     private Set<Affair> userAffairs = new HashSet<>();
 
 //    @ManyToMany(cascade = CascadeType.MERGE)
@@ -57,6 +59,7 @@ public class User {
     )
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
+    @EqualsAndHashCode.Exclude
     private Set<Role> roles;
 
     @ManyToMany(cascade = CascadeType.MERGE)
@@ -64,14 +67,30 @@ public class User {
             name = "votes",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "comp_id", referencedColumnName = "id"))
+    @EqualsAndHashCode.Exclude
     private Set<Competition> competitions = new HashSet<>();
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
     private Set<SpectacleEvent> spectacleEvent;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
     private Set<Contestant> contestants;
 
-    @OneToMany(mappedBy = "owner", fetch =  FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
+    private Set<AffairRating> affairRatings;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
+    private Set<ArticleRating> articleRatings;
+
+    @OneToMany(mappedBy = "owner", fetch =  FetchType.EAGER, cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
     private Set<Affair> affairs = new HashSet<>();
+
+    @OneToMany(mappedBy = "author", fetch =  FetchType.EAGER, cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
+    private Set<Article> articles = new HashSet<>();
 }
