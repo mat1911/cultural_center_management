@@ -24,10 +24,10 @@ public class Article {
     @Column(name = "is_accepted")
     private Boolean isAccepted;
     private String title;
-    @Column(length = 3000)
+    @Column(length = 5000)
     private String content;
 
-    @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "article", fetch = FetchType.EAGER, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<ArticleRating> articleRatings;
 

@@ -13,5 +13,6 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
             "ORDER BY article.sinceDate DESC")
     Page<Article> findAllFilteredAndAccepted(Pageable pageable, String keyword);
 
-    Page<Article> findAllByOrderBySinceDateDesc(Pageable pageable);
+    Page<Article> findAllByIsAcceptedTrueOrderBySinceDateDesc(Pageable pageable);
+    Page<Article> findAllByIsAcceptedFalseOrderBySinceDateDesc(Pageable pageable);
 }

@@ -18,7 +18,7 @@ public class News {
     private String title;
     @Column(name = "short_description", length = 1000)
     private String shortDescription;
-    @Column(length = 1000)
+    @Column(length = 3000)
     private String description;
     @Column(name = "picture_url")
     private String pictureUrl;

@@ -11,14 +11,10 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetArticleDto {
+public class GetAllArticlesDto {
     private Long id;
     private LocalDate sinceDate;
     private String pictureUrl;
     private String title;
-    private String content;
     private Double rate;
-    private String authorName;
-    private String authorSurname;
-    private Long authorId;
 }

@@ -45,13 +45,6 @@ public class User {
     @EqualsAndHashCode.Exclude
     private Set<Affair> userAffairs = new HashSet<>();
 
-//    @ManyToMany(cascade = CascadeType.MERGE)
-//    @JoinTable(
-//            name = "user_role",
-//            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-//    private Set<MyRole> userRoles = new HashSet<>();
-
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
             name = "users_roles",
@@ -72,25 +65,21 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     @EqualsAndHashCode.Exclude
-    private Set<SpectacleEvent> spectacleEvent;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    @EqualsAndHashCode.Exclude
     private Set<Contestant> contestants;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<AffairRating> affairRatings;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<ArticleRating> articleRatings;
 
-    @OneToMany(mappedBy = "owner", fetch =  FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", fetch =  FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<Affair> affairs = new HashSet<>();
 
-    @OneToMany(mappedBy = "author", fetch =  FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "author", fetch =  FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<Article> articles = new HashSet<>();
 }

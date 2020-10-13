@@ -1,4 +1,4 @@
-package com.app.cultural_center_management.dto.newsDto;
+package com.app.cultural_center_management.dto.articlesDto;
 
 import com.app.cultural_center_management.validators.MultipartFileValidator;
 import lombok.AllArgsConstructor;
@@ -10,17 +10,15 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.constraints.Size;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class UpdateNewsDto {
+public class UpdateArticleDto {
     private Long id;
     @Size(min = 3, message = "Title should contain at least 3 letters")
     private String title;
-    @Size(min = 3, max = 3000, message = "Description should contain at least 3 characters and maximum 3000 characters")
-    private String description;
-    @Size(min = 3, max = 1000, message = "Short description should contain at least 3 characters and maximum 1000 characters")
-    private String shortDescription;
+    @Size(min = 1, max = 5000, message = "Content should be given and should contain max 5000 characters")
+    private String content;
     @MultipartFileValidator(maxSize = 90000, message = "Picture size should be lower than 90KB and acceptable " +
             "extensions are png, jpg, jpeg")
     private MultipartFile picture;
