@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 public class UpdateAffairDto {
     @Size(min = 3, max = 255, message = "Title should has min 3 characters and max 255 characters")
     private String title;
-    @Size(min = 3, max = 1000, message = "Title should has min 3 characters and max 255 characters")
+    @Size(min = 3, max = 1000, message = "Title should has min 3 characters and max 1000 characters")
     private String shortDescription;
     @MultipartFileValidator(message = "Picture size should be lower than 90KB and acceptable " +
             "extensions are png, jpg, jpeg",maxSize = 90000)

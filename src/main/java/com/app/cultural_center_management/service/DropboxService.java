@@ -6,6 +6,7 @@ import com.dropbox.core.DbxRequestConfig;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.FileMetadata;
 import com.dropbox.core.v2.sharing.SharedLinkMetadata;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,8 +19,10 @@ import java.util.UUID;
 public class DropboxService {
 
     private DbxClientV2 client;
-    private String dataFolder = "/CulturalCenter/";
-    private String accessToken = "";
+    @Value("${dropbox.accesstoken}")
+    private String accessToken;
+    @Value("${dropbox.datafolder}")
+    private String dataFolder;
 
     @PostConstruct
     public void initialize(){

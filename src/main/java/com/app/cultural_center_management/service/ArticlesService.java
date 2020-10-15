@@ -39,7 +39,7 @@ public class ArticlesService {
         articleToCreate.setPictureUrl(DEFAULT_PICTURE_URL);
         articleToCreate.setIsAccepted(false);
         articleToCreate.setAuthor(userRepository.findById(authorId)
-                .orElseThrow(() -> new ObjectNotFoundException("Affair with given id does not exist!")));
+                .orElseThrow(() -> new ObjectNotFoundException("Article with given id does not exist!")));
 
         if (Objects.nonNull(updateArticleDto.getPicture())){
             articleToCreate.setPictureUrl(dropboxService.uploadFile(updateArticleDto.getPicture()));

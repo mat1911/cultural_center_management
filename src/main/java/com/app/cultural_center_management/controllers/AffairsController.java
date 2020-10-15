@@ -41,7 +41,6 @@ public class AffairsController {
     @PatchMapping("enroll/{affairId}")
     @ResponseStatus(HttpStatus.OK)
     public Long enrollUsersToAffair(@PathVariable Long affairId, @RequestBody List<Long> usersId){
-        System.out.println("AffairsController -> enrollUsersToAffair()");
         return affairsService.enrollUsersToAffair(affairId, usersId);
     }
 

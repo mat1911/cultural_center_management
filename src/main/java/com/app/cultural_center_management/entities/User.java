@@ -58,12 +58,12 @@ public class User {
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "votes",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "voter_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "comp_id", referencedColumnName = "id"))
     @EqualsAndHashCode.Exclude
     private Set<Competition> competitions = new HashSet<>();
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<Contestant> contestants;
 
