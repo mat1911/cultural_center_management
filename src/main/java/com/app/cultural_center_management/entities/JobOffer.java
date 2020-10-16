@@ -1,16 +1,18 @@
 package com.app.cultural_center_management.entities;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "job_offers")
 public class JobOffer {
 
@@ -20,7 +22,12 @@ public class JobOffer {
     private String name;
     @Column(name = "working_hours")
     private String workingHours;
+    @Column(name = "since_date")
+    private LocalDate sinceDate;
+    @Column(length = 5000)
     private String description;
-    @ManyToMany(mappedBy = "chosenJobOffers")
-    private Set<User> applicants = new HashSet<>();
+
+    @OneToMany(mappedBy = "jobOffer", fetch = FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
+    private Set<Application> applications;
 }

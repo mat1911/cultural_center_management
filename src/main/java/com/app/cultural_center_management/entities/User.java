@@ -31,14 +31,6 @@ public class User {
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
-            name = "applications",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "job_id", referencedColumnName = "id"))
-    @EqualsAndHashCode.Exclude
-    private Set<JobOffer> chosenJobOffers = new HashSet<>();
-
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(
             name = "participants",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "ann_id", referencedColumnName = "id"))
@@ -74,6 +66,10 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<ArticleRating> articleRatings;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
+    @EqualsAndHashCode.Exclude
+    private Set<Application> applications;
 
     @OneToMany(mappedBy = "owner", fetch =  FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @EqualsAndHashCode.Exclude

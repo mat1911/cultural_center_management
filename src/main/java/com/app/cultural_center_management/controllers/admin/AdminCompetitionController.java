@@ -1,7 +1,6 @@
 package com.app.cultural_center_management.controllers.admin;
 
 import com.app.cultural_center_management.dto.ResponseData;
-import com.app.cultural_center_management.dto.competitionsDto.GetAllCompetitionsDto;
 import com.app.cultural_center_management.dto.competitionsDto.GetCompetitionContestantsDto;
 import com.app.cultural_center_management.dto.competitionsDto.UpdateCompetitionDto;
 import com.app.cultural_center_management.exceptions.InvalidFormData;
