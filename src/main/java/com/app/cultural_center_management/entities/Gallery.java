@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -15,6 +16,6 @@ public class Gallery {
     private Long id;
     @Column(name = "picture_url")
     private String  pictureUrl;
-    @Column(name = "picture_title")
-    private String pictureTitle;
+    @Column(name = "since_date")
+    private LocalDate sinceDate;
 }
