@@ -22,12 +22,12 @@ public class RegisterUserDto {
     private String email;
     @Size(min = 3, message = "Username should contain at least 3 letters")
     private String username;
-    @Size(min = 3, message = "Username should contain at least 3 letters")
+    @Size(min = 3, message = "Password should contain at least 3 letters")
     private String password;
     private String repeatedPassword;
-    @Size(min = 3, message = "Username should contain at least 3 letters")
+    @Size(min = 3, message = "name should contain at least 3 letters")
     private String name;
-    @Size(min = 3, message = "Username should contain at least 3 letters")
+    @Size(min = 3, message = "surname should contain at least 3 letters")
     private String surname;
     @Min(value = 13, message = "User must be at least 13 years old")
     private Integer age;

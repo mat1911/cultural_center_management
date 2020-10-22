@@ -23,11 +23,10 @@ public class User {
     private String surname;
     private Integer age;
     private String email;
-    @Column(name = "avatar_url")
-    private String avatarUrl;
     @Column(name = "phone_number")
     private String phoneNumber;
-    private Boolean newsletter;
+    @Column(name = "is_enabled")
+    private Boolean isEnabled;
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(

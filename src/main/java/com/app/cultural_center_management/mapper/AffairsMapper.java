@@ -1,6 +1,7 @@
 package com.app.cultural_center_management.mapper;
 import com.app.cultural_center_management.dto.affairsDto.GetAffairDto;
 import com.app.cultural_center_management.dto.affairsDto.GetAllAffairsDto;
+import com.app.cultural_center_management.dto.affairsDto.GetAllUserAffairs;
 import com.app.cultural_center_management.dto.affairsDto.UpdateAffairDto;
 import com.app.cultural_center_management.entities.Affair;
 import com.app.cultural_center_management.entities.AffairRating;
@@ -26,6 +27,20 @@ public interface AffairsMapper {
                         .title(affair.getTitle())
                         .availableSeats(affair.getAvailableSeats())
                         .rate(calculateAverageRate(affair.getAffairRatings()))
+                        .build())
+                .collect(Collectors.toList());
+    }
+
+    static List<GetAllUserAffairs> fromAffairsListToGetAllUserAffairs(Set<Affair> affairs){
+        return affairs
+                .stream()
+                .map(affair -> GetAllUserAffairs
+                        .builder()
+                        .id(affair.getId())
+                        .description(affair.getDescription())
+                        .shortDescription(affair.getShortDescription())
+                        .pictureUrl(affair.getPictureUrl())
+                        .title(affair.getTitle())
                         .build())
                 .collect(Collectors.toList());
     }

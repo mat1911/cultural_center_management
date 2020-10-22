@@ -1,7 +1,11 @@
 package com.app.cultural_center_management.service;
 
 import com.app.cultural_center_management.dto.securityDto.RegisterUserDto;
+import com.app.cultural_center_management.dto.usersDto.UpdateUserPasswordDto;
 import com.app.cultural_center_management.entities.Role;
+import com.app.cultural_center_management.entities.User;
+import com.app.cultural_center_management.entities.VerificationToken;
+import com.app.cultural_center_management.exceptions.ObjectNotFoundException;
 import com.app.cultural_center_management.mapper.UsersMapper;
 import com.app.cultural_center_management.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,10 +39,17 @@ public class SecurityService {
 
          var user = UsersMapper.fromRegisterUserToUser(registerUserDto);
          user.setPassword(passwordEncoder.encode(user.getPassword()));
+         user.setIsEnabled(false);
          user.setRoles(Set.of(Role.ROLE_USER));
          return userRepository
                  .save(user)
                  .getId();
     }
 
+    public Boolean activateAccount(Long userId){
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new ObjectNotFoundException("user with given id does not exist!"));
+        user.setIsEnabled(true);
+        return user.getIsEnabled();
+    }
 }

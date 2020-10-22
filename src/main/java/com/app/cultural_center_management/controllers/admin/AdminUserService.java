@@ -1,7 +1,7 @@
 package com.app.cultural_center_management.controllers.admin;
 
 import com.app.cultural_center_management.dto.ResponseData;
-import com.app.cultural_center_management.dto.usersDto.GetUser;
+import com.app.cultural_center_management.dto.usersDto.GetUserDto;
 import com.app.cultural_center_management.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,11 +20,11 @@ public class AdminUserService {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public ResponseData<List<GetUser>> getAllUsers(@RequestParam(defaultValue = "1") int pageNumber,
-                                     @RequestParam(defaultValue = "5") int pageSize, @RequestParam String filter){
-        Page<GetUser> resultPage = userService.getAllUsers(pageNumber - 1, pageSize, filter);
+    public ResponseData<List<GetUserDto>> getAllUsers(@RequestParam(defaultValue = "1") int pageNumber,
+                                                      @RequestParam(defaultValue = "5") int pageSize, @RequestParam String filter){
+        Page<GetUserDto> resultPage = userService.getAllUsers(pageNumber - 1, pageSize, filter);
         return ResponseData
-                .<List<GetUser>>builder()
+                .<List<GetUserDto>>builder()
                 .data(resultPage.getContent())
                 .fullContentSize(resultPage.getTotalElements())
                 .build();

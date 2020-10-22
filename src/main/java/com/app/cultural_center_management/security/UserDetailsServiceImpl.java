@@ -26,7 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .map(userFromDb -> new User(
                         userFromDb.getUsername(),
                         userFromDb.getPassword(),
-                        true, true, true, true,
+                        userFromDb.getIsEnabled(), true, true, true,
                         userFromDb
                                 .getRoles()
                                 .stream()

@@ -1,9 +1,6 @@
 package com.app.cultural_center_management.service;
 
-import com.app.cultural_center_management.dto.affairsDto.GetAffairDto;
-import com.app.cultural_center_management.dto.affairsDto.GetAllAffairsDto;
-import com.app.cultural_center_management.dto.affairsDto.GetEnrolledForAffairUser;
-import com.app.cultural_center_management.dto.affairsDto.UpdateAffairDto;
+import com.app.cultural_center_management.dto.affairsDto.*;
 import com.app.cultural_center_management.entities.Affair;
 import com.app.cultural_center_management.entities.AffairRating;
 import com.app.cultural_center_management.entities.User;
@@ -58,6 +55,12 @@ public class AffairsService {
         List<GetAllAffairsDto> resultContent = AffairsMapper.fromAffairListToGetAllAffairsList(page.getContent());
 
         return new PageImpl<>(resultContent, pageRequest, page.getTotalElements());
+    }
+
+    public List<GetAllUserAffairs> getAllAffairsByUserId(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ObjectNotFoundException("User with given id does not exists!"));
+        return AffairsMapper.fromAffairsListToGetAllUserAffairs(user.getUserAffairs());
     }
 
     public GetAffairDto getAffairById(Long affairId){

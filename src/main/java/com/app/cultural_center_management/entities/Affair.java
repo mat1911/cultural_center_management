@@ -31,14 +31,17 @@ public class Affair {
 
     @OneToMany(mappedBy = "affair", fetch = FetchType.EAGER)
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Set<AffairRating> affairRatings;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "owner_id")
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private User owner;
 
     @ManyToMany(mappedBy = "userAffairs", cascade = CascadeType.ALL)
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Set<User> participants = new HashSet<>();
 }

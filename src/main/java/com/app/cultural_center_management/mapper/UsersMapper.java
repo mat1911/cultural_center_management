@@ -2,7 +2,7 @@ package com.app.cultural_center_management.mapper;
 
 import com.app.cultural_center_management.dto.affairsDto.GetEnrolledForAffairUser;
 import com.app.cultural_center_management.dto.securityDto.RegisterUserDto;
-import com.app.cultural_center_management.dto.usersDto.GetUser;
+import com.app.cultural_center_management.dto.usersDto.GetUserDto;
 import com.app.cultural_center_management.entities.User;
 
 import java.util.List;
@@ -33,14 +33,13 @@ public interface UsersMapper {
                         .surname(user.getSurname())
                         .email(user.getEmail())
                         .phoneNumber(user.getPhoneNumber())
-                        .avatarUrl(user.getAvatarUrl())
                         .build())
                 .collect(Collectors.toSet());
     }
 
-    static List<GetUser> fromUserListToGetUserList(List<User> users) {
+    static List<GetUserDto> fromUserListToGetUserDtoList(List<User> users) {
         return users.stream()
-                .map(user -> GetUser.builder()
+                .map(user -> GetUserDto.builder()
                         .id(user.getId())
                         .name(user.getName())
                         .surname(user.getSurname())
@@ -50,6 +49,18 @@ public interface UsersMapper {
                         .age(user.getAge())
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    static GetUserDto fromUserToGetUserDto(User user){
+        return GetUserDto.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .surname(user.getSurname())
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .phoneNumber(user.getPhoneNumber())
+                .age(user.getAge())
+                .build();
     }
 
 }
