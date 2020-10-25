@@ -5,6 +5,7 @@ import com.app.cultural_center_management.exceptions.InvalidFormData;
 import com.app.cultural_center_management.exceptions.NotAllowedOperationException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -46,5 +47,11 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.CONFLICT)
     public AppError handleNotAllowedOperationException(NotAllowedOperationException ex){
         return new AppError(ex.getMessage(), 409);
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public AppError handleAccessDeniedException(AccessDeniedException ex){
+        return new AppError(ex.getMessage(), 403);
     }
 }

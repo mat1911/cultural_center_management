@@ -24,12 +24,12 @@ public class Contestant {
     @Column(name = "is_accepted")
     private Boolean isAccepted;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     @EqualsAndHashCode.Exclude
     private User user;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "comp_id")
     @EqualsAndHashCode.Exclude
     private Competition competition;

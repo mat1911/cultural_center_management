@@ -29,11 +29,11 @@ public class Application {
     @Column(name = "since_date")
     private LocalDate sinceDate;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "job_offer_id")
     private JobOffer jobOffer;
 }

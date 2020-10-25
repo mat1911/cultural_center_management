@@ -31,7 +31,7 @@ public class Article {
     @EqualsAndHashCode.Exclude
     private Set<ArticleRating> articleRatings;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "author_id")
     @EqualsAndHashCode.Exclude
     private User author;

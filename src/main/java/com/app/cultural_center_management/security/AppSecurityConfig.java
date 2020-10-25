@@ -115,13 +115,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/**").permitAll()
-//                .antMatchers("/security/**").permitAll()
-//                .antMatchers("/h2-console/**").permitAll()
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/user/**").hasRole("USER")
                 .anyRequest()
-                .authenticated()
+                .permitAll()
 
                 .and()
                 .addFilter(new JwtAuthenticationFilter(authenticationManager(), tokensService))

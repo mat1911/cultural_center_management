@@ -112,8 +112,12 @@ public class AffairsService {
     public Long deleteAffair(Long affairId){
         Affair affair = affairRepository.findById(affairId)
                 .orElseThrow(() -> new ObjectNotFoundException("Affair with given id does not exist!"));
+        Set<User> users = affair.getParticipants();
+        for(User user : users){
+            user.getUserAffairs().remove(affair);
+            affair.getParticipants().remove(user);
+        }
         affairRepository.delete(affair);
-
         return affair.getId();
     }
 

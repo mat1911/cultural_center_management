@@ -3,12 +3,17 @@ package com.app.cultural_center_management.controllers;
 import com.app.cultural_center_management.dto.ResponseData;
 import com.app.cultural_center_management.dto.careersDto.GetAllJobOffersDto;
 import com.app.cultural_center_management.dto.galleryDto.GetAllGalleryDto;
+import com.app.cultural_center_management.dto.galleryDto.UpdateGalleryDto;
+import com.app.cultural_center_management.exceptions.InvalidFormData;
 import com.app.cultural_center_management.service.GalleryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,6 +23,21 @@ import java.util.List;
 public class GalleryController {
 
     private final GalleryService galleryService;
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasRole('ADMIN')")
+    public Long addNewPicture(@Valid @ModelAttribute UpdateGalleryDto updateGalleryDto, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){ throw new InvalidFormData("Data in form is invalid", bindingResult); }
+        return galleryService.addNewPicture(updateGalleryDto);
+    }
+
+    @DeleteMapping("/{pictureId}")
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasRole('ADMIN')")
+    public Long deletePicture(@PathVariable Long pictureId){
+        return galleryService.deletePicture(pictureId);
+    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

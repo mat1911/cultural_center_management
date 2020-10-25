@@ -29,18 +29,18 @@ public class Affair {
     @Column(name = "available_seats")
     private Long availableSeats;
 
-    @OneToMany(mappedBy = "affair", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "affair", fetch = FetchType.EAGER, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<AffairRating> affairRatings;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne()
     @JoinColumn(name = "owner_id")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private User owner;
 
-    @ManyToMany(mappedBy = "userAffairs", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "userAffairs")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<User> participants = new HashSet<>();

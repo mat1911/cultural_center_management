@@ -28,7 +28,7 @@ public class User {
     @Column(name = "is_enabled")
     private Boolean isEnabled;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany
     @JoinTable(
             name = "participants",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -46,7 +46,7 @@ public class User {
     @EqualsAndHashCode.Exclude
     private Set<Role> roles;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany
     @JoinTable(
             name = "votes",
             joinColumns = @JoinColumn(name = "voter_id", referencedColumnName = "id"),
@@ -70,11 +70,12 @@ public class User {
     @EqualsAndHashCode.Exclude
     private Set<Application> applications;
 
-    @OneToMany(mappedBy = "owner", fetch =  FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "owner", fetch =  FetchType.EAGER, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<Affair> affairs = new HashSet<>();
 
-    @OneToMany(mappedBy = "author", fetch =  FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "author", fetch =  FetchType.EAGER, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<Article> articles = new HashSet<>();
+
 }

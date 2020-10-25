@@ -21,11 +21,11 @@ public class AffairRating {
     private Long id;
     private Long rating;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "affair_id")
     private Affair affair;
 }
