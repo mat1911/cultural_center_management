@@ -4,13 +4,16 @@ import com.app.cultural_center_management.dto.ResponseData;
 import com.app.cultural_center_management.dto.articlesDto.GetAllArticlesDto;
 import com.app.cultural_center_management.dto.articlesDto.GetArticleDto;
 import com.app.cultural_center_management.dto.articlesDto.UpdateArticleDto;
+import com.app.cultural_center_management.exceptions.InvalidFormData;
 import com.app.cultural_center_management.service.ArticlesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -53,14 +56,16 @@ public class ArticleController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-    public Long createArticle(@RequestParam Long authorId, @ModelAttribute UpdateArticleDto updateArticleDto){
+    public Long createArticle(@RequestParam Long authorId, @Valid @ModelAttribute UpdateArticleDto updateArticleDto, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){ throw new InvalidFormData("Data in form is invalid", bindingResult); }
         return articlesService.createArticle(updateArticleDto, authorId);
     }
 
     @PutMapping("/{articleId}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-    public Long updateArticle(@PathVariable Long articleId, @ModelAttribute UpdateArticleDto updateArticleDto){
+    public Long updateArticle(@PathVariable Long articleId, @Valid @ModelAttribute UpdateArticleDto updateArticleDto, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){ throw new InvalidFormData("Data in form is invalid", bindingResult); }
         return articlesService.updateArticle(updateArticleDto, articleId);
     }
 

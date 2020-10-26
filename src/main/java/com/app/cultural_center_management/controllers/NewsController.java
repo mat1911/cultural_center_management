@@ -43,7 +43,8 @@ public class NewsController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('ADMIN')")
-    public Long createNews(@Valid @ModelAttribute UpdateNewsDto updateNewsDto){
+    public Long createNews(@Valid @ModelAttribute UpdateNewsDto updateNewsDto, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){ throw new InvalidFormData("Data in form is invalid", bindingResult); }
         return newsService.createNews(updateNewsDto);
     }
 

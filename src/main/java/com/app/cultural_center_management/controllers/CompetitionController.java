@@ -80,7 +80,8 @@ public class CompetitionController {
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public Long createContestant(@PathVariable Long competitionId, @RequestParam Long userId,
-                                 @Valid @ModelAttribute UpdateContestantsDto updateContestantsDto){
+                                 @Valid @ModelAttribute UpdateContestantsDto updateContestantsDto, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){ throw new InvalidFormData("Data in form is invalid", bindingResult); }
         return competitionsService.createContestant(competitionId, userId, updateContestantsDto);
     }
 
