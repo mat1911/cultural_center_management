@@ -55,7 +55,9 @@ public class NewsService {
         news.setDateOfAdd(LocalDate.now());
 
         if (Objects.nonNull(updateNewsDto.getPicture())) {
-            dropboxService.deleteFile(news.getPictureUrl());
+            if(!news.getPictureUrl().equals(DEFAULT_PICTURE_URL)) {
+                dropboxService.deleteFile(news.getPictureUrl());
+            }
             news.setPictureUrl(dropboxService.uploadFile(updateNewsDto.getPicture()));
         }
         return news.getId();

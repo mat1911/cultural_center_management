@@ -126,6 +126,8 @@ public class ArticlesService {
         if(!user.getRoles().contains(Role.ROLE_ADMIN) && !user.getId().equals(article.getAuthor().getId())){
             throw new NotAllowedOperationException("Article can be removed only by author or admin!");
         }
+        if (article.getPictureUrl().compareTo(DEFAULT_PICTURE_URL) != 0) {dropboxService.deleteFile(article.getPictureUrl());}
+
         user.getArticles().remove(article);
         articleRepository.delete(article);
 

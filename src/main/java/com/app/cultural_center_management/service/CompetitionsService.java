@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -152,8 +153,13 @@ public class CompetitionsService {
     public Long deleteCompetitionById(Long competitionId){
         Competition competition = competitionRepository.findById(competitionId)
                 .orElseThrow(() -> new ObjectNotFoundException("Competition with given id does not exist!"));
+        Set<Contestant> contestants = competition.getContestants();
 
+        contestants.forEach(x -> System.out.println(x.getId()));
+
+        for(Contestant contestant: contestants){deleteContestant(competitionId, contestant.getUser().getId());}
         if (competition.getPictureUrl().compareTo(DEFAULT_PICTURE_URL) != 0) {dropboxService.deleteFile(competition.getPictureUrl());}
+
         competitionRepository.delete(competition);
         return competition.getId();
     }

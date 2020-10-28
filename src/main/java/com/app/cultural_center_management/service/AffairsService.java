@@ -117,6 +117,7 @@ public class AffairsService {
             user.getUserAffairs().remove(affair);
             affair.getParticipants().remove(user);
         }
+        if (affair.getPictureUrl().compareTo(DEFAULT_PICTURE_URL) != 0) {dropboxService.deleteFile(affair.getPictureUrl());}
         affairRepository.delete(affair);
         return affair.getId();
     }

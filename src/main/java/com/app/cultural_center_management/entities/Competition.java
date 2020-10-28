@@ -25,7 +25,7 @@ public class Competition {
     private String pictureUrl;
     @Column(name = "since_date")
     private LocalDate sinceDate;
-    @OneToMany(mappedBy = "competition", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "competition", fetch = FetchType.EAGER)
     @EqualsAndHashCode.Exclude
     private Set<Contestant> contestants;
 
