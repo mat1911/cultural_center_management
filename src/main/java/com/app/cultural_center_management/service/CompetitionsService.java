@@ -1,15 +1,15 @@
 package com.app.cultural_center_management.service;
 
 import com.app.cultural_center_management.dto.competitionsDto.*;
-import com.app.cultural_center_management.entities.Competition;
-import com.app.cultural_center_management.entities.Contestant;
-import com.app.cultural_center_management.entities.User;
-import com.app.cultural_center_management.exceptions.NotAllowedOperationException;
-import com.app.cultural_center_management.exceptions.ObjectNotFoundException;
+import com.app.cultural_center_management.entity.Competition;
+import com.app.cultural_center_management.entity.Contestant;
+import com.app.cultural_center_management.entity.User;
+import com.app.cultural_center_management.exception.NotAllowedOperationException;
+import com.app.cultural_center_management.exception.ObjectNotFoundException;
 import com.app.cultural_center_management.mapper.CompetitionMapper;
-import com.app.cultural_center_management.repositories.CompetitionRepository;
-import com.app.cultural_center_management.repositories.ContestantRepository;
-import com.app.cultural_center_management.repositories.UserRepository;
+import com.app.cultural_center_management.repository.CompetitionRepository;
+import com.app.cultural_center_management.repository.ContestantRepository;
+import com.app.cultural_center_management.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

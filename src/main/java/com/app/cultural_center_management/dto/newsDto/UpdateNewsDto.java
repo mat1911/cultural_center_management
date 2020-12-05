@@ -1,6 +1,6 @@
 package com.app.cultural_center_management.dto.newsDto;
 
-import com.app.cultural_center_management.validators.MultipartFileValidator;
+import com.app.cultural_center_management.validator.MultipartFileValidator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

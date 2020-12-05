@@ -1,6 +1,6 @@
 package com.app.cultural_center_management.dto.securityDto;
 
-import com.app.cultural_center_management.entities.Role;
+import com.app.cultural_center_management.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

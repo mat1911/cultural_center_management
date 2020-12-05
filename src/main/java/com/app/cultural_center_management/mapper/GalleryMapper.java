@@ -1,7 +1,7 @@
 package com.app.cultural_center_management.mapper;
 
 import com.app.cultural_center_management.dto.galleryDto.GetAllGalleryDto;
-import com.app.cultural_center_management.entities.Gallery;
+import com.app.cultural_center_management.entity.Gallery;
 
 import java.util.List;
 import java.util.stream.Collectors;

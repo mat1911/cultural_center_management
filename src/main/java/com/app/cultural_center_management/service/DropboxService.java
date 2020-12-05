@@ -1,6 +1,6 @@
 package com.app.cultural_center_management.service;
 
-import com.app.cultural_center_management.exceptions.DropboxFileException;
+import com.app.cultural_center_management.exception.DropboxFileException;
 import com.dropbox.core.DbxException;
 import com.dropbox.core.DbxRequestConfig;
 import com.dropbox.core.v2.DbxClientV2;

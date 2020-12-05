@@ -3,8 +3,8 @@ import com.app.cultural_center_management.dto.affairsDto.GetAffairDto;
 import com.app.cultural_center_management.dto.affairsDto.GetAllAffairsDto;
 import com.app.cultural_center_management.dto.affairsDto.GetAllUserAffairs;
 import com.app.cultural_center_management.dto.affairsDto.UpdateAffairDto;
-import com.app.cultural_center_management.entities.Affair;
-import com.app.cultural_center_management.entities.AffairRating;
+import com.app.cultural_center_management.entity.Affair;
+import com.app.cultural_center_management.entity.AffairRating;
 
 import java.util.List;
 import java.util.OptionalDouble;

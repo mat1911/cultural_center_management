@@ -3,11 +3,11 @@ package com.app.cultural_center_management.service;
 import com.app.cultural_center_management.dto.usersDto.GetUserDto;
 import com.app.cultural_center_management.dto.usersDto.UpdateUserPasswordDto;
 import com.app.cultural_center_management.dto.usersDto.UpdateUserProfileDto;
-import com.app.cultural_center_management.entities.User;
-import com.app.cultural_center_management.exceptions.NotAllowedOperationException;
-import com.app.cultural_center_management.exceptions.ObjectNotFoundException;
+import com.app.cultural_center_management.entity.User;
+import com.app.cultural_center_management.exception.NotAllowedOperationException;
+import com.app.cultural_center_management.exception.ObjectNotFoundException;
 import com.app.cultural_center_management.mapper.UsersMapper;
-import com.app.cultural_center_management.repositories.UserRepository;
+import com.app.cultural_center_management.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -34,7 +34,6 @@ public class UserService {
         if(Objects.nonNull(keyword) && !keyword.isEmpty()){
             page = userRepository.findAllAndFiltered(pageRequest, keyword);
         }else {
-            System.out.println("TAK");
             page = userRepository.findAllByOrderById(pageRequest);
         }
 

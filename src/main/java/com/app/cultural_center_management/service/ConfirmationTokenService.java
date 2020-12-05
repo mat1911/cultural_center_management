@@ -1,11 +1,11 @@
 package com.app.cultural_center_management.service;
 
 
-import com.app.cultural_center_management.entities.User;
-import com.app.cultural_center_management.entities.VerificationToken;
-import com.app.cultural_center_management.exceptions.ObjectNotFoundException;
-import com.app.cultural_center_management.repositories.UserRepository;
-import com.app.cultural_center_management.repositories.VerificationTokenRepository;
+import com.app.cultural_center_management.entity.User;
+import com.app.cultural_center_management.entity.VerificationToken;
+import com.app.cultural_center_management.exception.ObjectNotFoundException;
+import com.app.cultural_center_management.repository.UserRepository;
+import com.app.cultural_center_management.repository.VerificationTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -3,7 +3,7 @@ package com.app.cultural_center_management.mapper;
 import com.app.cultural_center_management.dto.affairsDto.GetEnrolledForAffairUser;
 import com.app.cultural_center_management.dto.securityDto.RegisterUserDto;
 import com.app.cultural_center_management.dto.usersDto.GetUserDto;
-import com.app.cultural_center_management.entities.User;
+import com.app.cultural_center_management.entity.User;
 
 import java.util.List;
 import java.util.Set;

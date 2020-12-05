@@ -1,14 +1,14 @@
 package com.app.cultural_center_management.service;
 
 import com.app.cultural_center_management.dto.careersDto.*;
-import com.app.cultural_center_management.entities.Application;
-import com.app.cultural_center_management.entities.JobOffer;
-import com.app.cultural_center_management.entities.User;
-import com.app.cultural_center_management.exceptions.ObjectNotFoundException;
+import com.app.cultural_center_management.entity.Application;
+import com.app.cultural_center_management.entity.JobOffer;
+import com.app.cultural_center_management.entity.User;
+import com.app.cultural_center_management.exception.ObjectNotFoundException;
 import com.app.cultural_center_management.mapper.JobOffersMapper;
-import com.app.cultural_center_management.repositories.ApplicationRepository;
-import com.app.cultural_center_management.repositories.JobOfferRepository;
-import com.app.cultural_center_management.repositories.UserRepository;
+import com.app.cultural_center_management.repository.ApplicationRepository;
+import com.app.cultural_center_management.repository.JobOfferRepository;
+import com.app.cultural_center_management.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

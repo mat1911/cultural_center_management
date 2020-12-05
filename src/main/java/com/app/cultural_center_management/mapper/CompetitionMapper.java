@@ -1,8 +1,8 @@
 package com.app.cultural_center_management.mapper;
 
 import com.app.cultural_center_management.dto.competitionsDto.*;
-import com.app.cultural_center_management.entities.Competition;
-import com.app.cultural_center_management.entities.Contestant;
+import com.app.cultural_center_management.entity.Competition;
+import com.app.cultural_center_management.entity.Contestant;
 
 import java.util.List;
 import java.util.stream.Collectors;

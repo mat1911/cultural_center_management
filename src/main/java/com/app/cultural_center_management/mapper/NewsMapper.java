@@ -3,7 +3,7 @@ package com.app.cultural_center_management.mapper;
 import com.app.cultural_center_management.dto.newsDto.GetAllNewsDto;
 import com.app.cultural_center_management.dto.newsDto.GetNewsDto;
 import com.app.cultural_center_management.dto.newsDto.UpdateNewsDto;
-import com.app.cultural_center_management.entities.News;
+import com.app.cultural_center_management.entity.News;
 
 import java.util.List;
 import java.util.stream.Collectors;

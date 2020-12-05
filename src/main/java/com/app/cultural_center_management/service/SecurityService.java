@@ -1,13 +1,11 @@
 package com.app.cultural_center_management.service;
 
 import com.app.cultural_center_management.dto.securityDto.RegisterUserDto;
-import com.app.cultural_center_management.dto.usersDto.UpdateUserPasswordDto;
-import com.app.cultural_center_management.entities.Role;
-import com.app.cultural_center_management.entities.User;
-import com.app.cultural_center_management.entities.VerificationToken;
-import com.app.cultural_center_management.exceptions.ObjectNotFoundException;
+import com.app.cultural_center_management.entity.Role;
+import com.app.cultural_center_management.entity.User;
+import com.app.cultural_center_management.exception.ObjectNotFoundException;
 import com.app.cultural_center_management.mapper.UsersMapper;
-import com.app.cultural_center_management.repositories.UserRepository;
+import com.app.cultural_center_management.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

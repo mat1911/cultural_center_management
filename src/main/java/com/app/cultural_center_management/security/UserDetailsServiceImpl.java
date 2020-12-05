@@ -1,6 +1,6 @@
 package com.app.cultural_center_management.security;
 
-import com.app.cultural_center_management.repositories.UserRepository;
+import com.app.cultural_center_management.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

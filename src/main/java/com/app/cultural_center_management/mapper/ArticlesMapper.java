@@ -3,8 +3,8 @@ package com.app.cultural_center_management.mapper;
 import com.app.cultural_center_management.dto.articlesDto.GetAllArticlesDto;
 import com.app.cultural_center_management.dto.articlesDto.GetArticleDto;
 import com.app.cultural_center_management.dto.articlesDto.UpdateArticleDto;
-import com.app.cultural_center_management.entities.Article;
-import com.app.cultural_center_management.entities.ArticleRating;
+import com.app.cultural_center_management.entity.Article;
+import com.app.cultural_center_management.entity.ArticleRating;
 
 import java.util.List;
 import java.util.OptionalDouble;

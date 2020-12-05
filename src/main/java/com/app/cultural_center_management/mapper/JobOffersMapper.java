@@ -1,8 +1,8 @@
 package com.app.cultural_center_management.mapper;
 
 import com.app.cultural_center_management.dto.careersDto.*;
-import com.app.cultural_center_management.entities.Application;
-import com.app.cultural_center_management.entities.JobOffer;
+import com.app.cultural_center_management.entity.Application;
+import com.app.cultural_center_management.entity.JobOffer;
 
 import java.util.List;
 import java.util.stream.Collectors;

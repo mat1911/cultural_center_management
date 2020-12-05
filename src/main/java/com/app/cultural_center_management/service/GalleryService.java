@@ -2,10 +2,10 @@ package com.app.cultural_center_management.service;
 
 import com.app.cultural_center_management.dto.galleryDto.GetAllGalleryDto;
 import com.app.cultural_center_management.dto.galleryDto.UpdateGalleryDto;
-import com.app.cultural_center_management.entities.Gallery;
-import com.app.cultural_center_management.exceptions.ObjectNotFoundException;
+import com.app.cultural_center_management.entity.Gallery;
+import com.app.cultural_center_management.exception.ObjectNotFoundException;
 import com.app.cultural_center_management.mapper.GalleryMapper;
-import com.app.cultural_center_management.repositories.GalleryRepository;
+import com.app.cultural_center_management.repository.GalleryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
