@@ -31,6 +31,7 @@ public class ArticlesService {
     private final ArticleRatingRepository articleRatingRepository;
     private final UserRepository userRepository;
     private final DropboxService dropboxService;
+    private final EmailService emailService;
 
     public Long createArticle(UpdateArticleDto updateArticleDto, Long authorId){
         Article articleToCreate = ArticlesMapper.fromUpdateArticleDtoToArticle(updateArticleDto);
@@ -78,6 +79,8 @@ public class ArticlesService {
         Article article = articleRepository.findById(articleId)
                 .orElseThrow(() -> new ObjectNotFoundException("Article with given id does not exist!"));
         article.setIsAccepted(isAccepted);
+
+        emailService.sendArticleAcceptanceStatus(article.getAuthor().getEmail(), article.getTitle(), isAccepted);
         return article.getId();
     }
 

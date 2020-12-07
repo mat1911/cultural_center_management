@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Bean;
 
 import javax.crypto.SecretKey;
 
-
 @SpringBootApplication
 public class CulturalCenterManagementApplication {
 

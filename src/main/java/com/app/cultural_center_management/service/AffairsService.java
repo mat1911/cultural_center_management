@@ -33,6 +33,7 @@ public class AffairsService {
     private final AffairRatingRepository affairRatingRepository;
     private final UserRepository userRepository;
     private final DropboxService dropboxService;
+    private final EmailService emailService;
 
 
     public Long createAffair(UpdateAffairDto updateAffairDto, Long ownerId){
@@ -162,6 +163,8 @@ public class AffairsService {
 
         affair.setAvailableSeats(affair.getAvailableSeats() - 1);
         user.getUserAffairs().add(affair);
+
+        emailService.sendAffairConfirmation(user.getEmail(), affair.getTitle());
 
         return user.getId();
     }
