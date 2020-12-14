@@ -98,4 +98,5 @@ public class ConfirmationTokenServiceUnitTests {
 
         Assertions.assertThrows(SecurityException.class, () -> confirmationTokenService.getUserIdByToken(ArgumentMatchers.anyString()));
     }
+
 }
