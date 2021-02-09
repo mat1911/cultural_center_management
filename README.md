@@ -24,37 +24,38 @@ Link to frontend part: https://github.com/mat1911/cultural-center-frontend
 
 News page
 
-![News page](https://drive.google.com/uc?export=view&id=1Fk-9QMW5ZUff85M22BZRLeK--vJmxlOe)
+![News page](https://github.com/mat1911/Screenshots/blob/main/Cultural_center/thesis_screenshot_1.PNG?raw=true)
 
 <br />
 
 Articles page
 
-![Articles page](https://drive.google.com/uc?export=view&id=107TcMuNdW8_fgXV4TKNRtymsUxS782Nx)
+![Articles page](https://github.com/mat1911/Screenshots/blob/main/Cultural_center/thesis_screenshot_2.PNG?raw=true)
 
 <br />
 
 Page to manage article visibility by admin
 
-![Admin - articles](https://drive.google.com/uc?export=view&id=13xNW6btePUjZfR7mfMLFm56gTXiGgpwP)
+![Admin - articles](https://github.com/mat1911/Screenshots/blob/main/Cultural_center/thesis_screenshot_5.PNG?raw=true)
 
 
 <br />
 
-Page to manage article visibility by admin
+Contact page
 
-![Contact page](https://drive.google.com/uc?export=view&id=1_8s_DRaqN33i73EjgxyxxzBqk6cn2FEU)
+![Contact page](https://github.com/mat1911/Screenshots/blob/main/Cultural_center/thesis_screenshot_4.PNG?raw=true)
 
 
 <br />
 
 User events page
 
-![User events page](https://drive.google.com/uc?export=view&id=1GuDRnhX0vkBd4RSX9XcLc0IUKT1W5ScC)
+![User events page](https://github.com/mat1911/Screenshots/blob/main/Cultural_center/thesis_screenshot_6.PNG?raw=true)
 
 
 <br />
 
 Job offers page
 
-![Job offers page](https://drive.google.com/uc?export=view&id=1NfTfSFwD98JgaABA5zN948g0E3hmqTMQ)
+![Job offers page](https://github.com/mat1911/Screenshots/blob/main/Cultural_center/thesis_screenshot_3.PNG?raw=true)
+
